@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monty Hall Problem</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #0a0909;
+            background-color: rgb(37, 77, 37);
+            padding: 20px;
+        }
+
+       
+        
+        .door-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .door-img {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+        }
+        
+        .chosen-door {
+            width: 1000px;
+            height: 1000px;
+            margin: 10px;
+            /* Add any additional styles for the chosen door */
+        }
+        
+        p {
+            color: #666;
+        }
+        
+        input[type="number"] {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        label {
+            margin-right: 10px;
+        }
+
+        /* Container for the two bar containers */
+        .bar-container-wrapper {
+            display: flex;
+            justify-content: space-evenly; /* Add space between the two bar containers */
+            margin-top: 10px; /* Adjust the top margin to reduce spacing */
+        }
+
+        /* Bar container for when switched */
+        .bar-container-switched {
+            width: 150%; /* Set the width of the bar container */
+            height: 20px; /* Set the height of the bar */
+            background-color: #ccc; /* Set the background color of the bar */
+            border-radius: 5px; /* Add some rounded corners to the bar */
+            overflow: hidden; /* Ensure that segments don't overflow the container */
+        }
+        
+        .bar-segment-switched {
+            height: 100%;
+            float: left;
+        }
+        
+        #bar_segment_1_switched {
+            background-color: blue; /* Set the color for the first segment */
+        }
+        
+        #bar_segment_2_switched {
+            background-color: red; /* Set the color for the second segment */
+        }
+
+        /* Bar container for when not switched */
+        .bar-container-notSwitched {
+            width: 150%; /* Set the width of the bar container */
+            height: 20px; /* Set the height of the bar */
+            background-color: #ccc; /* Set the background color of the bar */
+            border-radius: 5px; /* Add some rounded corners to the bar */
+            overflow: hidden; /* Ensure that segments don't overflow the container */
+        }
+        
+        .bar-segment-notSwitched {
+            height: 100%;
+            float: left;
+        }
+        
+        #bar_segment_1_notSwitched {
+            background-color: blue; /* Set the color for the first segment */
+        }
+        
+        #bar_segment_2_notSwitched {
+            background-color: red; /* Set the color for the second segment */
+        }
+
+        /*Now were styling the little blue and red squares*/
+        .color-square{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+        }
+
+        .lost-switched{
+            background-color: blue;
+        }
+
+        .won-switched {
+            background-color: red;
+        }
+
+
+        .lost-notSwitched{
+            background-color: blue;
+        }
+
+        .won-notSwitched {
+            background-color: red;
+        }
+
+        /* Adjust the spacing for the text above the bars */
+        .bar-container-wrapper h3,
+        .bar-container-wrapper p {
+            margin-top: 5px; /* Reduce the top margin to decrease spacing */
+            margin-bottom: 5px; /* Reduce the bottom margin to decrease spacing */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Monty Hall Problem</h1>
+
+    <div class="door-container">
+        <img src="door1.jfif" alt="Door 1" class="door-img" onclick="replaceDoorWithChosenDoor(1)">
+        <img src="door2.jfif" alt="Door 2" class="door-img" onclick="replaceDoorWithChosenDoor(2)">
+        <img src="door3.jfif" alt="Door 3" class="door-img" onclick="replaceDoorWithChosenDoor(3)">
+    </div>
+
+    <button onclick="resetGame()">Reset</button> <!-- Add the reset button -->
+
+    <div class="bar-container-wrapper">
+        <div>
+            <h3>
+                Change choice                            
+            </h3>
+            <br>
+            <p id="resultForPercentTimesWonSwitched"></p>
+            <p id="resultForPercentTimesLostSwitched"></p>
+
+            <div class="bar-container-switched">
+                <div class="bar-segment-switched" id="bar_segment_1_switched"></div>
+                <div class="bar-segment-switched" id="bar_segment_2_switched"></div>
+            </div>
+
+            <br>
+        
+            <p>
+                <span class="color-square won-switched"></span>
+                Percent Times Won
+            </p>
+            <p>
+                <span class="color-square lost-switched"></span>
+                    Percent Times Lost
+            </p>
+        
+            
+        </div>
+    
+        <div>
+            <h3>
+                Keep choice
+            </h3>
+            <br>
+            <p id="resultForPercentTimesWonNotSwitched"></p>
+            <p id="resultForPercentTimesLostNotSwitched"></p>
+
+            <div class="bar-container-notSwitched">
+                <div class="bar-segment-notSwitched" id="bar_segment_1_notSwitched"></div>
+                <div class="bar-segment-notSwitched" id="bar_segment_2_notSwitched"></div>
+            </div>
+            <br>        
+            <p>
+                <span class="color-square won-notSwitched"></span>
+                Percent Times Won
+            </p>
+            <p>
+                <span class="color-square lost-notSwitched"></span>
+                Percent Times Lost
+            </p>
+        
+            
+        </div>
+    </div>
+
+    <!-- Link to your JavaScript file -->
+    <script src="openingDoorTest.js"></script>
+</body>
+</html>
