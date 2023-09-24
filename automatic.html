@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monty Hall Problem</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+    
+        h1 {
+            text-align: center;
+            color: #0a0909;
+            background-color: rgb(37, 77, 37);
+            padding: 20px;
+        }
+    
+        .door-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    
+        .door-img {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+        }
+    
+        p {
+            color: #666;
+        }
+    
+        input[type="number"] {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    
+        label {
+            margin-right: 10px;
+        }
+    
+        /*Now we're styling the bar graph*/
+        .bar-container {
+            width: 300px; /* Set the width of the bar */
+            height: 20px; /* Set the height of the bar */
+            background-color: #ccc; /* Set the background color of the bar */
+            border-radius: 5px; /* Add some rounded corners to the bar */
+            overflow: hidden; /* Ensure that segments don't overflow the container */
+        }
+    
+        .bar-segment {
+            height: 100%;
+            float: left;
+        }
+    
+        #bar_segment_1 {
+            background-color: blue; /* Set the color for the first segment */
+        }
+    
+        #bar_segment_2 {
+            background-color: red; /* Set the color for the second segment */
+        }
+    
+        /*Now we're styling the little blue and red squares*/
+        .color-square {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+        }
+    
+        .lost {
+            background-color: red;
+        }
+    
+        .won {
+            background-color: blue;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h1>Monty Hall Problem</h1>
+
+    <div class="door-container">
+        <img src="door1.jfif" alt="Door 1" class="door-img" >
+        <img src="door2.jfif" alt="Door 2" class="door-img" >
+        <img src="door3.jfif" alt="Door 3" class="door-img" >
+    </div>
+
+    <p>How many times would you like to play?</p>
+
+    <input id="amount" name="amount" type="number" step="1" min="1" max="9999999">
+
+    <br>
+
+    <p>Would you like to switch doors or keep your original door?</p>
+
+    <input type="radio" id="switch" name="switch" value="yes">
+    <label for="switch">Switch</label>
+
+    <input type="radio" id="dont_switch" name="switch" value="no">
+    <label for="dont_switch">Don't Switch</label>
+
+    <button id="submitButton">Submit</button>
+
+
+    <p id="resultForPercentTimesWon"></p>
+    <p id="resultForPercentTimesLost"></p>
+
+    <br>
+
+    <h3>
+        Percent times won and lost
+    </h3>
+
+    <p>
+        <span class="color-square won"></span>
+        Percent Times Won
+    </p>
+    <p>
+        <span class="color-square lost"></span>
+        Percent Times Lost
+    </p>
+  
+    <div class="bar-container">
+        <div class="bar-segment" id="bar_segment_1"></div>
+        <div class="bar-segment" id="bar_segment_2"></div>
+    </div>
+
+   
+
+    <!-- Link to your JavaScript file -->
+    <script src="montyHallJavaScript.js"></script>
+</body>
+</html>
